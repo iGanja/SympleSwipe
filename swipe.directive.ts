@@ -34,7 +34,6 @@ export class SwipeDirective {
               this.sympleSwipe.emit();
             }
           }
-
         });
     }
   }
