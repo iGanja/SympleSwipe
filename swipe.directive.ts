@@ -7,6 +7,8 @@ import { fromEvent, map, zip } from 'rxjs';
 export class SwipeDirective {
 
   @Output() sympleSwipe: EventEmitter<any> = new EventEmitter();
+  @Output() sympleSwipeRight: EventEmitter<any> = new EventEmitter();
+  @Output() sympleSwipeLeft: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private el: ElementRef
@@ -31,7 +33,15 @@ export class SwipeDirective {
             var y = swipe.end.changedTouches[0]?.clientY - swipe.start.changedTouches[0]?.clientY;
             if (Math.abs(x) > 20 && Math.abs(x) >= Math.abs(y)) // horizontal swipe
             {
-              this.sympleSwipe.emit();
+              if (this.sympleSwipe.observers.length) { // swipe either
+                this.sympleSwipe.emit();
+              }
+              else if (x > 0 && this.sympleSwipeRight.observers.length) { // swipe right
+                this.sympleSwipeRight.emit();
+              }
+              else if (x < 0 && this.sympleSwipeLeft.observers.length) { // swipe left
+                this.sympleSwipeLeft.emit();
+              }
             }
           }
         });
