@@ -10,6 +10,6 @@ The directive is currently set to response to horizontal swipes (right to left o
 |sympleSwipe (sympleSwipeRight) | right swipe |
 |sympleSwipe (sympleSwipeLeft) | left swipe |
 
-If you would like add functionality please do.
+If you would like add functionality, please do.
 
 iGanja
